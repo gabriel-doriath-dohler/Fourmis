@@ -9,3 +9,7 @@ Les fourmis se déplacent selon les règles suivantes :
   - avec une probabilité (1 - p) la fourmi ne fait pas attention au 2 dernières règles.
   - une fourmi va vers une case voisine où grille_total est maximal si evite est faux. (caractère attractif)
   - une fourmi va vers une case voisine où grille_total est minimal si evite est vrai. (caractère répulsif)
+  
+# Exemples
+Attractif : https://www.youtube.com/watch?v=UG4bMAezPVk
+Répulsif : https://www.youtube.com/watch?v=PtZeTQ-D370
