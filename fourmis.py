@@ -48,25 +48,25 @@ def argmin(cases, tab):
 
 def deplace(fourmis, grille, grille_total, p, evite):
     '''
-    Déplace les fourmis celon les règles suivantes :
+    Déplace les fourmis selon les règles suivantes :
         - une fourmi ne peut pas monter.
         - une fourmi ne peut pas rester sur place.
         - une fourmi ne peut pas revenir sur sa position précédente.
         - avec une probabilité (1 - p) la fourmi ne fait pas attention au 2 dernières règles.
-        - une fourmi va vers une case voisine où grille_total est maximal si evite est vrai.
-        - une fourmi va vers une case voisine où grille_total est minimal si evite est faux.
+        - une fourmi va vers une case voisine où grille_total est maximal si evite est faux.
+        - une fourmi va vers une case voisine où grille_total est minimal si evite est vrai.
     '''
     d = [(0, 1), (0, -1), (1, 0), (1, 1), (1, -1)]
     new_fourmis = []
     for x, y, x_old, y_old in fourmis:
         cases_voisines = list(filter(lambda pt: pt != (x_old, y_old), [((x + dx) % len(grille), (y + dy) % len(grille)) for dx, dy in d]))
         if random() < p:  # Suit toutes les règles.
-            if evite:
-                cases = argmax(cases_voisines, grille_total)
-            else:  # Ne fait pas attention au 2 dernières règles.
+            if evite:  # Répulsif.
                 cases = argmin(cases_voisines, grille_total)
+            else:  # Attractif.
+                cases = argmax(cases_voisines, grille_total)
             x_new, y_new = choice(cases)
-        else:
+        else:  # Ne fait pas attention au 2 dernières règles.
             x_new, y_new = choice(cases_voisines)
         new_fourmis.append((x_new, y_new, x, y))
     for x, y, x_old, y_old in new_fourmis:
@@ -76,7 +76,7 @@ def deplace(fourmis, grille, grille_total, p, evite):
     return new_fourmis
 
 
-def simule(taille=10, nb_fourmis=10, nb_iter=100, p=0.8, evite=True):
+def simule(taille=10, nb_fourmis=10, nb_iter=100, p=0.8, evite=False):
     fourmis, grille, grille_total = gen_fourmis(nb_fourmis, taille)
 
     images = []
@@ -114,5 +114,5 @@ def main(taille, nb_fourmis, nb_iter, p, evite):
 
 
 if __name__ == '__main__':
-    main(100, 200, 1000, 0.9, True)
+    main(100, 200, 1000, 0.9, False)
 
