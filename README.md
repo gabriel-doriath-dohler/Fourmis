@@ -14,5 +14,5 @@ Les fourmis se déplacent selon les règles suivantes :
 ## Attractif : https://www.youtube.com/watch?v=UG4bMAezPVk
 ![alt text](https://github.com/gabriel-doriath-dohler/Fourmis/blob/master/attractif.png?raw=true)
 
-## Répulsif : https://www.youtube.com/watch?v=PtZeTQ-D37
+## Répulsif : https://www.youtube.com/watch?v=PtZeTQ-D370
 ![alt text](https://github.com/gabriel-doriath-dohler/Fourmis/blob/master/repulsif.png?raw=true)
